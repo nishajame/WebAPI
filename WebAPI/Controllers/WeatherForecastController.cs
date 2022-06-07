@@ -40,10 +40,10 @@ namespace WebAPI.Controllers
         [HttpGet]
         [Route("/GetStringReverse")]
 
-        public string GetStringReverse()
+        public string GetStringReverse(string str)
         {
-            string str = "Nisha";
-            char[] cArr = new char[str.Length];
+            //string str = "Nisha";
+            //char[] cArr = new char[str.Length];
             //int j = 0;
             string strRev = "";
 
@@ -66,8 +66,29 @@ namespace WebAPI.Controllers
                 result = result * i;
             }
             return result;
-        } 
+        }
 
-       
+        [HttpGet]
+        [Route("/GetFibonacci")]
+        public int[] GetFibonacci(int limit)
+        {
+            int a = 0,b = 1,temp;
+            int[] fib = new int[limit];
+            fib[0] = a;
+            fib[1] = b;
+
+            Console.Write(a + " " + b);
+
+            for (int i = 2; i < limit; i++)
+            {
+                temp = a + b;
+                fib[i] = temp;
+                Console.Write(" " + temp);
+                a = b;
+                b = temp;
+            }
+            return fib;
+        }
+
     }
 }
